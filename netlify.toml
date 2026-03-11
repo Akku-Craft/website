@@ -31,3 +31,13 @@
   from = "/github"
   to = "https://github.com/jumpstone"
   status = 301
+
+[[redirects]]
+from = "/dc"
+to = "https://discord.gg/yKU4Q2mHj8"
+status = 301
+
+[[redirects]]
+from = "/discord"
+to = "https://discord.gg/yKU4Q2mHj8"
+status = 301
