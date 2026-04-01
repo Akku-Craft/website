@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import Script from "next/script";
 
+export const runtime = "edge";
+
 export const metadata: Metadata = {
   title: "Contact",
   description: "Contact details protected by Cloudflare Turnstile.",

@@ -1,6 +1,8 @@
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 
+export const runtime = "edge";
+
 type TurnstileVerificationResponse = {
   success: boolean;
 };
