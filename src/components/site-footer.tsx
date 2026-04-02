@@ -17,7 +17,7 @@ export default function SiteFooter() {
               </li>
               <li>
                 <a className="underline underline-offset-2" href="/contact">
-                  Contact Page
+                  Contact
                 </a>
               </li>
             </ul>
