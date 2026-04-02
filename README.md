@@ -99,7 +99,8 @@ We welcome contributions! If you'd like to improve the website, please feel free
 
 ## License
 
-This project is licensed under GNU GPLv3. For more information, visit the [LICENSE File](LICENSE)
+This project is licensed under GNU GPLv3. For more information, visit the [LICENSE File](LICENSE).
+Note: The old Website is licensed under CC BY NC SA 4.0. For more information, visit the [LICENSE File](legacy/LICENSE) of the old Website.
 
 ## Support
 
