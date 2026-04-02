@@ -41,7 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/contributing`,
       lastModified: new Date("2026-04-02"),
       changeFrequency: "yearly",
-      priority: 0.7,
+      priority: 0.9,
     },
   ];
 
