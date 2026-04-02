@@ -39,7 +39,7 @@ export default function WikiShell({ children }: WikiShellProps) {
       <div className="pointer-events-none fixed inset-0 -z-10 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[36px_36px] opacity-10" />
 
       <div className="w-full">
-        <aside className="hidden h-fit w-64 rounded-r-base border-2 border-l-0 border-border bg-secondary-background p-4 font-normal shadow-shadow md:fixed md:left-0 md:top-28 md:block md:max-h-[calc(100vh-7rem)] md:overflow-y-auto">
+        <aside className="mb-6 h-fit w-full rounded-base border-2 border-border bg-secondary-background p-4 font-normal shadow-shadow md:fixed md:left-0 md:top-28 md:mb-0 md:w-64 md:max-h-[calc(100vh-7rem)] md:overflow-y-auto md:rounded-r-base md:border-l-0">
           <div className="mb-4 flex items-center gap-3 rounded-base border-2 border-border bg-background p-3 shadow-shadow">
             <div className="inline-flex size-10 items-center justify-center rounded-base border-2 border-border bg-main text-foreground shadow-shadow">
               <BookOpenText className="size-5" />
