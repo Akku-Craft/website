@@ -2,16 +2,19 @@ import { Badge } from "@/components/ui/badge";
 import GitHubSections from "@/components/github-sections";
 import SectionHeading from "@/components/section-heading";
 import SiteFooter from "@/components/site-footer";
+import { SITE_URL } from "@/lib/site";
 import { ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
+import Link from "next/link";
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_URL || "https://akku-craft.usbverkehrtherum.de";
+const baseUrl = SITE_URL;
 
 export const metadata: Metadata = {
-  title: "Home",
   description:
     "Akku-Craft develops a modular battery system to reduce e-waste with decentralized monitoring, open hardware, and open source firmware.",
+  title: {
+    absolute: "Akku-Craft",
+  },
   alternates: {
     canonical: "/",
   },
@@ -120,11 +123,36 @@ export default function Page() {
         </p>
       </section>
 
+      <section className="mb-8 rounded-base border-2 border-border bg-secondary-background p-6 shadow-shadow md:p-8">
+        <SectionHeading index="02" title="Get Started" />
+        <p className="mb-5 max-w-3xl text-sm leading-relaxed md:text-base">
+          Want to get involved? Read the wiki to understand the project, or jump
+          straight in and contribute.{" "}
+        </p>
+
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Link
+            href="/wiki"
+            className="inline-flex items-center justify-center gap-2 rounded-base border-2 border-border bg-main px-4 py-2 text-sm font-heading uppercase tracking-wide text-main-foreground shadow-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
+          >
+            Read Wiki
+            <ArrowUpRight className="size-4" />
+          </Link>
+          <Link
+            href="/contributing"
+            className="inline-flex items-center justify-center gap-2 rounded-base border-2 border-border bg-background px-4 py-2 text-sm font-heading uppercase tracking-wide text-foreground shadow-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
+          >
+            Learn how to contribute
+            <ArrowUpRight className="size-4" />
+          </Link>
+        </div>
+      </section>
+
       <section
         id="about"
         className="mb-8 rounded-base border-2 border-border bg-secondary-background p-6 shadow-shadow"
       >
-        <SectionHeading index="02" title="About" />
+        <SectionHeading index="03" title="About" />
         <p className="mb-4 max-w-4xl text-sm leading-relaxed md:text-base">
           Sustainable • Modular • Decentralized
         </p>
@@ -173,7 +201,7 @@ export default function Page() {
         id="projects"
         className="mb-8 rounded-base border-2 border-border bg-secondary-background p-6 shadow-shadow"
       >
-        <SectionHeading index="03" title="Featured Repositorys" />
+        <SectionHeading index="04" title="Featured Repositories" />
         <ProjectGrid projects={featuredProjects} />
       </section>
 

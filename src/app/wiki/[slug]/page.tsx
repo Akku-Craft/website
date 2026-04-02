@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import WikiPage from "@/components/wiki-page";
+import { SITE_URL } from "@/lib/site";
 import { getWikiPage, wikiPages } from "@/lib/wiki-data";
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_URL || "https://akku-craft.usbverkehrtherum.de";
+const baseUrl = SITE_URL;
 
 type WikiSlugPageProps = {
   params: Promise<{
@@ -36,19 +36,19 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${page.title} | Wiki | Akku-Craft`,
+    title: `${page.title} | Wiki`,
     description: page.summary,
     alternates: {
       canonical: `/wiki/${page.slug}`,
     },
     openGraph: {
-      title: `${page.title} | Wiki | Akku-Craft`,
+      title: `${page.title} | Wiki`,
       description: page.summary,
       type: "article",
       url: `${baseUrl}/wiki/${page.slug}`,
     },
     twitter: {
-      title: `${page.title} | Wiki | Akku-Craft`,
+      title: `${page.title} | Wiki`,
       description: page.summary,
     },
   };

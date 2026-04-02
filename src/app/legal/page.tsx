@@ -1,12 +1,12 @@
 import SiteFooter from "@/components/site-footer";
+import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_URL || "https://akku-craft.usbverkehrtherum.de";
+const baseUrl = SITE_URL;
 
 export const metadata: Metadata = {
-  title: "Legal | Akku-Craft",
+  title: "Legal",
   description:
     "Legal information, privacy policy, and disclaimer for the Akku-Craft website.",
   alternates: {
@@ -46,8 +46,7 @@ export default function LegalPage() {
           </h2>
           <p className="text-sm leading-relaxed md:text-base">
             This is a purely private, non-commercial website. Its sole purpose
-            is to provide a personal introduction to my software projects and
-            myself.
+            is to provide a introduction to Akku-Craft
           </p>
           <p className="text-sm leading-relaxed md:text-base">
             No goods or services are offered for a fee. No commercial activity

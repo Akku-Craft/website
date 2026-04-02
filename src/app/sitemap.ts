@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site";
 import { wikiPages } from "@/lib/wiki-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_URL || "https://akku-craft.usbverkehrtherum.de";
+  const baseUrl = SITE_URL;
   const now = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -36,6 +36,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date("2026-04-02"),
       changeFrequency: "yearly",
       priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/contributing`,
+      lastModified: new Date("2026-04-02"),
+      changeFrequency: "yearly",
+      priority: 0.7,
     },
   ];
 

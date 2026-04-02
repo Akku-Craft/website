@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import SiteHeader from "@/components/site-header";
 import { ThemeModeProvider } from "@/components/theme-mode-provider";
+import { SITE_URL } from "@/lib/site";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -14,7 +15,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const baseUrl = process.env.NEXT_PUBLIC_URL || "https://jumpstone4477.de";
+const baseUrl = SITE_URL;
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),

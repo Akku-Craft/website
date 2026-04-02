@@ -67,6 +67,7 @@ export default function SiteHeader({
 
   const navLinks = [
     { href: "/wiki", label: "Wiki" },
+    { href: "/contributing", label: "Contributing" },
     { href: "/contact", label: "Contact" },
   ];
 

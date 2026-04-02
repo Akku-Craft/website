@@ -1,14 +1,14 @@
 import SiteFooter from "@/components/site-footer";
+import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import Script from "next/script";
 
 export const runtime = "edge";
-const baseUrl =
-  process.env.NEXT_PUBLIC_URL || "https://akku-craft.usbverkehrtherum.de";
+const baseUrl = SITE_URL;
 
 export const metadata: Metadata = {
-  title: "Contact | Akku-Craft",
+  title: "Contact",
   description:
     "Get in touch with Akku-Craft. Contact information for software projects and collaborations, with privacy protection.",
   alternates: {

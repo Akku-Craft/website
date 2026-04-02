@@ -1,29 +1,29 @@
-# Hardware Design and Schematics
+# Hardware Design & Schematics
 
-The electrical foundation of Akku-Craft is built on reliability and modularity. Our schematics are designed to handle high currents while maintaining precise monitoring capabilities for every single cell string.
+The electrical foundation of Akku-Craft is built on reliability and modularity. Our schematics are designed to handle high currents while maintaining precise monitoring capabilities for every individual cell string.
 
 ## Core Design Principles
 
-Our circuits are not just about connecting batteries. Each module is designed to be part of a larger network.
+Each module is designed to function as part of a larger network — not just to connect batteries.
 
-| Feature            | Description                                                    |
-| ------------------ | -------------------------------------------------------------- |
-| Voltage Monitoring | High-precision sensing for individual cell banks.              |
-| Balancing          | Active or passive balancing circuits to ensure cell longevity. |
-| Protection         | Integrated fuses and MOSFET-based disconnects.                 |
+| Feature            | Description                                                      |
+| ------------------ | ---------------------------------------------------------------- |
+| Voltage Monitoring | High-precision sensing for individual cell banks.                |
+| Balancing          | Active or passive balancing circuits to maximize cell longevity. |
+| Protection         | Integrated fuses and MOSFET-based disconnect switches.           |
 
 ![Main PCB Schematic Diagram](/wiki/schaltplan.png)
 
-<sub>This is not always the newest version. Please check the `schematics` repository for the latest files.</sub>
+> **Note:** This image may not reflect the latest revision. Check the `schematics` repository for up-to-date files.
 
 ## Repository Structure
 
-The hardware files are hosted in the `schematics` repository. We use industry-standard tools to ensure that anyone can audit or improve our designs.
+Hardware files are hosted in the `schematics` repository. We use industry-standard tooling to ensure that anyone can audit or contribute to our designs.
 
 ## Safety Warnings
 
-Working with lithium-ion batteries is inherently dangerous.
+Working with lithium-ion batteries carries real risk. Please follow these precautions:
 
-- Always double-check polarity before connecting modules.
-- Ensure that your bench power supply has current limiting enabled during the first test run of a new board.
+- Always verify polarity before connecting any modules.
+- Enable current limiting on your bench power supply during the first test run of a new board.
 - Keep a fire-safe container nearby when testing unverified hardware.

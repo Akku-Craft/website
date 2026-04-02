@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
 import WikiPage from "@/components/wiki-page";
+import { SITE_URL } from "@/lib/site";
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_URL || "https://akku-craft.usbverkehrtherum.de";
+const baseUrl = SITE_URL;
 
 export const metadata: Metadata = {
-  title: "Wiki | Akku-Craft",
+  title: "Wiki",
   description: "Internal wiki and project notes for Akku-Craft.",
   alternates: {
     canonical: "/wiki",

@@ -1,43 +1,48 @@
-# Firmware: ArduinoBMS Logic
+# Firmware: ArduinoBMS
 
-The brain of Akku-Craft is the ArduinoBMS firmware. It is responsible for the "Decentralized" aspect of our slogan, managing state-of-charge (SoC), state-of-health (SoH), and safety protocols.
+The ArduinoBMS firmware is the brain of Akku-Craft and the technical foundation of our "Decentralized" pillar. It manages state-of-charge (SoC), state-of-health (SoH), and all safety protocols in real time.
 
 ## Software Architecture
-The code is written in C++/Arduino and follows a modular structure to match our hardware. It handles real-time data acquisition and decision-making.
+
+The firmware is written in C++/Arduino and follows a modular structure that mirrors our hardware design. It handles real-time data acquisition and autonomous decision-making.
 
 ### Core Functions
-- Cell Voltage Measurement: Filtering noise to get accurate readings.
-- Over/Under Voltage Protection: Immediate cutoff if cells leave the safe operating window.
-- Thermal Throttling: Reducing current flow if the temperature rises above defined thresholds.
 
-## Dependencies and Libraries
-To compile the ArduinoBMS, you will need the following environment:
+- **Cell Voltage Measurement** — Noise-filtered readings for accurate per-cell data.
+- **Over/Undervoltage Protection** — Immediate cutoff if any cell leaves its safe operating window.
+- **Thermal Throttling** — Current is reduced automatically when temperatures exceed defined thresholds.
+
+## Dependencies & Libraries
+
+To compile ArduinoBMS, you will need:
+
 - Arduino IDE or PlatformIO
-- Specific libraries for the ADC (Analog-to-Digital Converter) used in the schematics.
-- Communication libraries for the internal bus (e.g., I2C or CAN-bus protocols).
+- ADC libraries matching the chip used in the schematics
+- Communication libraries for the internal bus (I²C or CAN)
 
-## Key Logic Loops
-The firmware operates on a high-priority loop for safety and a low-priority loop for telemetry.
+## Main Loop Structure
+
+The firmware operates on three priority tiers: a high-priority safety loop, a medium-priority logic loop, and a low-priority telemetry loop.
 
 ```cpp
 void loop() {
   unsigned long currentMillis = millis();
 
-  // 1. HIGH PRIORITY: Safety Check (alle 10ms)
+  // HIGH PRIORITY: Safety check (every 10 ms)
   if (currentMillis - lastSafetyCheck >= 10) {
     checkVoltages();
     checkTemperatures();
     lastSafetyCheck = currentMillis;
   }
 
-  // 2. MEDIUM PRIORITY: Logic & SoC (alle 500ms)
+  // MEDIUM PRIORITY: SoC & balancing logic (every 500 ms)
   if (currentMillis - lastLogicTick >= 500) {
     calculateSoC();
     manageBalancing();
     lastLogicTick = currentMillis;
   }
 
-  // 3. LOW PRIORITY: Telemetry (alle 1000ms)
+  // LOW PRIORITY: Telemetry broadcast (every 1000 ms)
   if (currentMillis - lastCommTick >= 1000) {
     broadcastStatus();
     lastCommTick = currentMillis;

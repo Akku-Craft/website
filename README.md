@@ -1,6 +1,6 @@
-# JumpStone Web
+# Akku-Craft Web
 
-Welcome to the official website for JumpStone.
+Welcome to the official website for Akku-Craft.
 
 ## About the Project
 
@@ -100,8 +100,7 @@ We welcome contributions! If you'd like to improve the website, please feel free
 ## License
 
 This project is licensed under GNU GPLv3. For more information, visit the [LICENSE File](LICENSE).
-Note: The old Website is licensed under CC BY NC SA 4.0. For more information, visit the [LICENSE File](legacy/LICENSE) of the old Website.
 
 ## Support
 
-For questions, issues, or feedback about this website, please reach out through my [contact page](https://jumpstone4477.de/contact).
+For questions, issues, or feedback about this website, please reach out through my [contact page](https://akku-craft.usbverkehrtherum.de/contact).
