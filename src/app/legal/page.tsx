@@ -2,19 +2,29 @@ import SiteFooter from "@/components/site-footer";
 import type { Metadata } from "next";
 import Link from "next/link";
 
+const baseUrl =
+  process.env.NEXT_PUBLIC_URL || "https://akku-craft.usbverkehrtherum.de";
+
 export const metadata: Metadata = {
-  title: "Legal | JumpStone",
+  title: "Legal | Akku-Craft",
   description:
-    "Legal information, privacy policy, and disclaimer for the JumpStone website.",
+    "Legal information, privacy policy, and disclaimer for the Akku-Craft website.",
+  alternates: {
+    canonical: "/legal",
+  },
   robots: {
     index: true,
     follow: true,
   },
   openGraph: {
-    title: "Legal Information | JumpStone",
-    description: "Legal information and disclaimer for the JumpStone website.",
+    title: "Legal Information | Akku-Craft",
+    description: "Legal information and disclaimer for the Akku-Craft website.",
     type: "website",
-    url: "https://jumpstone4477.de/legal",
+    url: `${baseUrl}/legal`,
+  },
+  twitter: {
+    title: "Legal Information",
+    description: "Legal information and disclaimer for the Akku-Craft website.",
   },
 };
 

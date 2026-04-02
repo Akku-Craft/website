@@ -4,21 +4,31 @@ import { cookies } from "next/headers";
 import Script from "next/script";
 
 export const runtime = "edge";
+const baseUrl =
+  process.env.NEXT_PUBLIC_URL || "https://akku-craft.usbverkehrtherum.de";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact | Akku-Craft",
   description:
-    "Get in touch with JumpStone. Contact information for software projects and collaborations, with privacy protection.",
+    "Get in touch with Akku-Craft. Contact information for software projects and collaborations, with privacy protection.",
+  alternates: {
+    canonical: "/contact",
+  },
   robots: {
     index: true,
     follow: true,
   },
   openGraph: {
-    title: "Contact JumpStone",
+    title: "Contact Akku-Craft",
     description:
       "Get in touch for software projects, collaborations, and inquiries.",
     type: "website",
-    url: "https://jumpstone4477.de/contact",
+    url: `${baseUrl}/contact`,
+  },
+  twitter: {
+    title: "Contact Akku-Craft",
+    description:
+      "Get in touch for software projects, collaborations, and inquiries.",
   },
 };
 
@@ -34,7 +44,7 @@ export default async function ContactPage() {
   const cookieStore = await cookies();
   const isUnlocked = cookieStore.get("contact_unlocked")?.value === "1";
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
-  const discordUsername = "jumpstone4477";
+  const discordUsername = "akku_craft";
   const emails = isUnlocked ? getContactEmails() : [];
 
   return (

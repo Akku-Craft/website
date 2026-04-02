@@ -16,6 +16,11 @@ export default function SiteFooter() {
                 </a>
               </li>
               <li>
+                <a className="underline underline-offset-2" href="/wiki">
+                  Wiki
+                </a>
+              </li>
+              <li>
                 <a className="underline underline-offset-2" href="/contact">
                   Contact
                 </a>
@@ -61,10 +66,10 @@ export default function SiteFooter() {
               <li>
                 <a
                   className="underline underline-offset-2"
-                  href="https://legacy.jumpstone4477.de"
+                  href="https://github.com/akku-craft"
                   target="_blank"
                 >
-                  Old website
+                  GitHub
                 </a>
               </li>
             </ul>
@@ -72,8 +77,9 @@ export default function SiteFooter() {
         </div>
 
         <div className="mt-4 rounded-base border-2 border-border bg-main px-4 py-3 text-sm text-main-foreground">
-          JumpStone Website © 2025 - 2026 by JumpStone. Licensed under CC
-          BY-NC-SA 4.0.
+          Based on JumpStone Website © 2025 - 2026 by JumpStone. Licensed under
+          GPL-3.0.
+          <p>Akku-Craft 2026</p>
         </div>
       </div>
     </footer>

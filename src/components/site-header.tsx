@@ -10,19 +10,9 @@ type SiteHeaderProps = {
 
 const socialLinks = [
   {
-    href: "https://github.com/jumpstone",
+    href: "https://github.com/akku-craft",
     iconName: "github",
     label: "GitHub",
-  },
-  {
-    href: "https://codeberg.org/jumpstone",
-    iconName: "codeberg",
-    label: "Codeberg",
-  },
-  {
-    href: "https://modrinth.com/organization/jumpstone-gaming",
-    iconName: "modrinth",
-    label: "Modrinth",
   },
 ];
 
@@ -32,7 +22,7 @@ function socialIconButtonClassName() {
 
 export default function SiteHeader({
   logoSrc = "/logo.png",
-  siteName = "JumpStone",
+  siteName = "Akku-Craft",
 }: SiteHeaderProps) {
   const { effectiveMode } = useThemeMode();
   const [isCompact, setIsCompact] = useState(false);
@@ -71,12 +61,20 @@ export default function SiteHeader({
         </span>
       </a>
 
-      <a
-        href="/contact"
-        className="absolute left-1/2 -translate-x-1/2 text-base text-foreground/80 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:underline"
-      >
-        Contact
-      </a>
+      <div className="absolute left-1/2 flex -translate-x-1/2 items-center gap-6">
+        <a
+          href="/wiki"
+          className="text-base text-foreground/80 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:underline"
+        >
+          Wiki
+        </a>
+        <a
+          href="/contact"
+          className="text-base text-foreground/80 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:underline"
+        >
+          Contact
+        </a>
+      </div>
 
       <div className="flex flex-wrap gap-2">
         {socialLinks.map((link) => (

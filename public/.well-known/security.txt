@@ -1,4 +1,4 @@
-Contact: mailto:security@jumpstone4477.de
+Contact: mailto:hi@akku-craft.usbverkehrtherum.de
 Expires: 2026-12-31T23:00:00.000Z
 Preferred-Languages: de, en
-Canonical: https://jumpstone4477.de/.well-known/security.txt
+Canonical: https://akku-craft.usbverkehrtherum.de/.well-known/security.txt

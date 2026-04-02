@@ -19,11 +19,11 @@ const baseUrl = process.env.NEXT_PUBLIC_URL || "https://jumpstone4477.de";
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "JumpStone",
-    template: "%s | JumpStone",
+    default: "Akku-Craft",
+    template: "%s | Akku-Craft",
   },
   description:
-    "JumpStone: Developer portfolio showcasing open source projects in gaming, hardware, and web technologies. Explore Minecraft modding, Arduino projects, and web applications.",
+    "Akku-Craft: project website showcasing open source projects in gaming, hardware, and web technologies. Explore Minecraft modding, Arduino projects, and web applications.",
   keywords: [
     "developer",
     "portfolio",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "minecraft modding",
     "arduino",
     "web development",
-    "JumpStone",
+    "Akku-Craft",
   ],
   robots: {
     index: true,
@@ -48,8 +48,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: baseUrl,
-    siteName: "JumpStone",
-    title: "JumpStone | Developer Portfolio & Open Source Projects",
+    siteName: "Akku-Craft",
+    title: "Akku-Craft | Project Website & Open Source Projects",
     description:
       "Discover open source projects in gaming, hardware, and web technologies",
     images: [
@@ -57,13 +57,13 @@ export const metadata: Metadata = {
         url: `${baseUrl}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "JumpStone - Developer Portfolio",
+        alt: "Akku-Craft - Project Website",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "JumpStone | Developer Portfolio & Open Source Projects",
+    title: "Akku-Craft | Project Website & Open Source Projects",
     description:
       "Discover open source projects in gaming, hardware, and web technologies",
     images: [`${baseUrl}/og-image.png`],
@@ -106,15 +106,11 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "JumpStone",
+    name: "Akku-Craft",
     url: baseUrl,
     description:
       "Developer showcasing open source projects in gaming, hardware, and web technologies",
-    sameAs: [
-      "https://github.com/jumpstone-gaming",
-      "https://github.com/akku-craft",
-      "https://modrinth.com/organization/jumpstone-gaming",
-    ],
+    sameAs: ["https://github.com/akku-craft"],
   };
 
   return (

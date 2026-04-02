@@ -5,7 +5,12 @@ import { Compass, Home, Mail } from "lucide-react";
 import SiteFooter from "@/components/site-footer";
 
 export const metadata: Metadata = {
-  title: "404 | JumpStone",
+  title: "404",
+  description: "Page not found | Akku-Craft.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function NotFound() {
@@ -24,7 +29,7 @@ export default function NotFound() {
           </h1>
           <p className="max-w-2xl text-base leading-relaxed">
             It may have been moved or the URL might be incorrect. Use one of the
-            quick links below to continue exploring JumpStone.
+            quick links below to continue exploring Akku-Craft.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
@@ -39,7 +44,7 @@ export default function NotFound() {
               className="inline-flex items-center gap-2 rounded-base border-2 border-border bg-background px-3 py-1.5 text-sm font-heading text-foreground shadow-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
             >
               <Mail className="size-4" />
-              Contact me
+              Contact us
             </Link>
           </div>
         </section>
@@ -55,34 +60,22 @@ export default function NotFound() {
             </p>
             <div className="flex flex-col gap-2">
               <Link
+                href="/wiki/"
+                className="inline-flex items-center justify-between rounded-base border-2 border-border bg-background px-3 py-2 text-sm font-heading shadow-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
+              >
+                Wiki
+                <span
+                  aria-hidden="true"
+                  className="font-mono text-xs text-foreground/70"
+                >
+                  {"->"}
+                </span>
+              </Link>
+              <Link
                 href="/#projects"
                 className="inline-flex items-center justify-between rounded-base border-2 border-border bg-background px-3 py-2 text-sm font-heading shadow-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
               >
-                Featured projects
-                <span
-                  aria-hidden="true"
-                  className="font-mono text-xs text-foreground/70"
-                >
-                  {"->"}
-                </span>
-              </Link>
-              <Link
-                href="/code-of-conduct"
-                className="inline-flex items-center justify-between rounded-base border-2 border-border bg-background px-3 py-2 text-sm font-heading shadow-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
-              >
-                Code of Conduct
-                <span
-                  aria-hidden="true"
-                  className="font-mono text-xs text-foreground/70"
-                >
-                  {"->"}
-                </span>
-              </Link>
-              <Link
-                href="/legal"
-                className="inline-flex items-center justify-between rounded-base border-2 border-border bg-background px-3 py-2 text-sm font-heading shadow-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
-              >
-                Legal notice
+                Featured Repositories
                 <span
                   aria-hidden="true"
                   className="font-mono text-xs text-foreground/70"

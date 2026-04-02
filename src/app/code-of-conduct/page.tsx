@@ -1,20 +1,31 @@
 import SiteFooter from "@/components/site-footer";
 import type { Metadata } from "next";
 
+const baseUrl =
+  process.env.NEXT_PUBLIC_URL || "https://akku-craft.usbverkehrtherum.de";
+
 export const metadata: Metadata = {
-  title: "Code of Conduct | JumpStone",
+  title: "Code of Conduct | Akku-Craft",
   description:
-    "Community guidelines for respectful and inclusive interaction across JumpStone spaces and projects.",
+    "Community guidelines for respectful and inclusive interaction across Akku-Craft spaces and projects.",
+  alternates: {
+    canonical: "/code-of-conduct",
+  },
   robots: {
     index: true,
     follow: true,
   },
   openGraph: {
-    title: "Code of Conduct | JumpStone",
+    title: "Code of Conduct | Akku-Craft",
     description:
-      "Community guidelines for respectful and inclusive interaction across JumpStone spaces.",
+      "Community guidelines for respectful and inclusive interaction across Akku-Craft spaces.",
     type: "website",
-    url: "https://jumpstone4477.de/code-of-conduct",
+    url: `${baseUrl}/code-of-conduct`,
+  },
+  twitter: {
+    title: "Code of Conduct",
+    description:
+      "Community guidelines for respectful and inclusive interaction across Akku-Craft spaces.",
   },
 };
 
@@ -29,7 +40,7 @@ export default function CodeOfConductPage() {
         </h1>
         <p className="max-w-3xl text-sm leading-relaxed md:text-base">
           Community guidelines for respectful and inclusive interaction across
-          all JumpStone and JumpStone-Gaming project areas.
+          all Akku-Craft project areas.
         </p>
       </section>
 
@@ -83,8 +94,8 @@ export default function CodeOfConductPage() {
           </h2>
           <p className="text-sm leading-relaxed md:text-base">
             This Code of Conduct applies across all project spaces managed under
-            JumpStone and JumpStone-Gaming, including public representation such
-            as official emails, social accounts, and community events.
+            Akku-Craft, including public representation such as official emails,
+            social accounts, and community events.
           </p>
         </section>
 
