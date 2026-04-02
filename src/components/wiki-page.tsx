@@ -15,7 +15,7 @@ export default async function WikiPage({ slug }: WikiPageProps) {
     notFound();
   }
 
-  const source = await readWikiMarkdown(slug);
+  const source = await readWikiMarkdown(page.fileName);
 
   return <WikiMarkdown source={source} />;
 }
