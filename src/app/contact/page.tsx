@@ -1,4 +1,7 @@
 import SiteFooter from "@/components/site-footer";
+import { getRequestLocale } from "@/lib/i18n-server";
+import { localizedPath } from "@/lib/i18n";
+import { getDictionary } from "@/dictionaries";
 import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
@@ -41,6 +44,8 @@ function getContactEmails() {
 }
 
 export default async function ContactPage() {
+  const locale = await getRequestLocale();
+  const dict = await getDictionary(locale, "contact");
   const cookieStore = await cookies();
   const isUnlocked = cookieStore.get("contact_unlocked")?.value === "1";
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
@@ -60,14 +65,14 @@ export default async function ContactPage() {
 
         <section className="mb-8 rounded-base border-2 border-border bg-main p-6 text-main-foreground shadow-shadow md:p-8">
           <h1 className="mb-2 text-3xl font-heading uppercase tracking-wide md:text-4xl">
-            Contact
+            {dict.title}
           </h1>
         </section>
 
         <section className="mb-8 rounded-base border-2 border-border bg-secondary-background p-6 shadow-shadow md:p-8">
           <div className="rounded-base border-2 border-border bg-background p-5 shadow-shadow">
             <h2 className="mb-3 text-xl font-heading uppercase tracking-wide">
-              Discord
+              {dict.discord}
             </h2>
             <p className="text-sm leading-relaxed md:text-base">
               <span className="font-heading">@{discordUsername}</span>
@@ -79,12 +84,11 @@ export default async function ContactPage() {
           {isUnlocked ? (
             <section className="rounded-base border-2 border-border bg-background p-5 shadow-shadow">
               <h2 className="mb-3 text-xl font-heading uppercase tracking-wide">
-                Email Addresses
+                {dict.emailAddresses}
               </h2>
               {emails.length === 0 ? (
                 <p className="text-sm leading-relaxed md:text-base">
-                  No contact emails are configured yet. Please set
-                  CONTACT_EMAIL_1..3 in your env file.
+                  {dict.noEmailsConfigured}
                 </p>
               ) : (
                 <ul className="space-y-2 text-sm md:text-base">
@@ -104,20 +108,19 @@ export default async function ContactPage() {
           ) : (
             <section className="rounded-base border-2 border-border bg-background p-5 shadow-shadow">
               <h2 className="mb-3 text-xl font-heading uppercase tracking-wide">
-                Unlock Email Addresses
+                {dict.unlockTitle}
               </h2>
               <p className="mb-4 text-sm leading-relaxed md:text-base">
-                Complete the Turnstile challenge to view the three email
-                addresses.
+                {dict.unlockText}
               </p>
 
               {!siteKey ? (
                 <p className="text-sm leading-relaxed text-red-700 md:text-base">
-                  Missing NEXT_PUBLIC_TURNSTILE_SITE_KEY in env.
+                  {dict.missingSiteKey}
                 </p>
               ) : (
                 <form
-                  action="/contact/verify"
+                  action={localizedPath(locale, "/contact/verify")}
                   method="post"
                   className="space-y-4"
                 >
@@ -130,7 +133,7 @@ export default async function ContactPage() {
                     type="submit"
                     className="inline-flex items-center gap-2 rounded-base border-2 border-border bg-main px-4 py-2 text-sm font-heading uppercase tracking-wide text-main-foreground shadow-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
                   >
-                    Verify and Show Emails
+                    {dict.verifyButton}
                   </button>
                 </form>
               )}

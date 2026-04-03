@@ -1,5 +1,7 @@
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
+import { getRequestLocale } from "@/lib/i18n-server";
+import { localizedPath } from "@/lib/i18n";
 
 export const runtime = "edge";
 
@@ -12,6 +14,7 @@ function redirectToContact(request: Request) {
 }
 
 export async function POST(request: Request) {
+  const locale = await getRequestLocale();
   const formData = await request.formData();
   const token = formData.get("cf-turnstile-response");
   const secretKey = process.env.TURNSTILE_SECRET_KEY;
@@ -55,12 +58,14 @@ export async function POST(request: Request) {
     return redirectToContact(request);
   }
 
-  const response = NextResponse.redirect(new URL("/contact", request.url));
+  const response = NextResponse.redirect(
+    new URL(localizedPath(locale, "/contact"), request.url),
+  );
   response.cookies.set("contact_unlocked", "1", {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
-    path: "/contact",
+    path: "/",
     maxAge: 60 * 60 * 24 * 7,
   });
 

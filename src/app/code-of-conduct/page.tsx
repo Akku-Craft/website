@@ -1,6 +1,11 @@
 import SiteFooter from "@/components/site-footer";
+import { getRequestLocale } from "@/lib/i18n-server";
+import { localizedPath } from "@/lib/i18n";
 import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { readFile } from "fs/promises";
+import path from "path";
 
 const baseUrl = SITE_URL;
 
@@ -20,7 +25,7 @@ export const metadata: Metadata = {
     description:
       "Community guidelines for respectful and inclusive interaction across Akku-Craft spaces.",
     type: "website",
-    url: `${baseUrl}/code-of-conduct`,
+    url: "${baseUrl}/code-of-conduct",
   },
   twitter: {
     title: "Code of Conduct",
@@ -29,153 +34,36 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CodeOfConductPage() {
+export default async function CodeOfConductPage() {
+  const locale = await getRequestLocale();
+  const filePath = path.join(
+    process.cwd(),
+    "src",
+    "content",
+    "pages",
+    locale,
+    "code-of-conduct.mdx"
+  );
+  
+  const mdxSource = await readFile(filePath, "utf8");
+
   return (
     <main className="relative mx-auto w-full max-w-6xl px-4 pb-0 md:px-8 md:pb-0">
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[36px_36px] opacity-10" />
-
-      <section className="mb-8 rounded-base border-2 border-border bg-main p-6 text-main-foreground shadow-shadow md:p-8">
-        <h1 className="mb-2 text-3xl font-heading uppercase tracking-wide md:text-4xl">
-          Code of Conduct
-        </h1>
-        <p className="max-w-3xl text-sm leading-relaxed md:text-base">
-          Community guidelines for respectful and inclusive interaction across
-          all Akku-Craft project areas.
-        </p>
-      </section>
-
-      <article className="mb-8 rounded-base border-2 border-border bg-secondary-background p-6 shadow-shadow md:p-8">
-        <section className="mb-6 rounded-base border-2 border-border bg-background p-5 shadow-shadow">
-          <h2 className="mb-3 text-xl font-heading uppercase tracking-wide">
-            Our Pledge
-          </h2>
-          <p className="text-sm leading-relaxed md:text-base">
-            As the maintainer of Akku-Craft, we are committed to providing a
-            friendly, safe, and welcoming environment for all, regardless of
-            level of experience, gender identity and expression, sexual
-            orientation, disability, personal appearance, body size, race,
-            ethnicity, age, religion, or nationality.
-          </p>
-        </section>
-
-        <section className="mb-6 rounded-base border-2 border-border bg-background p-5 shadow-shadow">
-          <h2 className="mb-4 text-xl font-heading uppercase tracking-wide">
-            Our Standards
-          </h2>
-
-          <div className="mb-4 rounded-base border-2 border-border bg-main p-4 text-main-foreground shadow-shadow">
-            <h3 className="mb-2 text-sm font-heading uppercase tracking-wide">
-              ✓ Examples of behavior that contributes to a positive environment
-              include:
-            </h3>
-            <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed md:text-base">
-              <li>Using welcoming and inclusive language.</li>
-              <li>Being respectful of differing viewpoints and experiences.</li>
-              <li>Gracefully accepting constructive criticism.</li>
-              <li>Focusing on what is best for the community.</li>
-              <li>Showing empathy towards other community members.</li>
-            </ul>
-          </div>
-
-          <div className="rounded-base border-2 border-border bg-[#ff4b2a] p-4 text-black shadow-shadow">
-            <h3 className="mb-2 text-sm font-heading uppercase tracking-wide">
-              ✗ Examples of unacceptable behavior include:
-            </h3>
-            <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed md:text-base">
-              <li>
-                The use of sexualized language or imagery and unwelcome sexual
-                attention or advances.
-              </li>
-              <li>
-                Trolling, insulting/derogatory comments, and personal or
-                political attacks.
-              </li>
-              <li>Public or private harassment.</li>
-              <li>
-                Publishing others' private information, such as a physical or
-                electronic address, without explicit permission.
-              </li>
-              <li>
-                Other conduct which could reasonably be considered inappropriate
-                in a professional setting.
-              </li>
-            </ul>
-          </div>
-        </section>
-
-        <section className="mb-6 rounded-base border-2 border-border bg-background p-5 shadow-shadow">
-          <h2 className="mb-3 text-xl font-heading uppercase tracking-wide">
-            Scope
-          </h2>
-          <p className="text-sm leading-relaxed md:text-base">
-            This Code of Conduct applies within all project spaces managed by
-            Akku-Craft, and it also applies when an individual is representing
-            the project or its community in public spaces. Examples of
-            representing a project or community include using an official
-            project e-mail address, posting via an official social media
-            account, or acting as an appointed representative at an online or
-            offline event.
-          </p>
-        </section>
-
-        <section className="mb-6 rounded-base border-2 border-border bg-background p-5 shadow-shadow">
-          <h2 className="mb-3 text-xl font-heading uppercase tracking-wide">
-            Enforcement
-          </h2>
-          <p className="mb-3 text-sm leading-relaxed md:text-base">
-            Responsibilities for clarifying the standards of acceptable behavior
-            and taking appropriate and fair corrective action in response to any
-            instances of unacceptable behavior lie with the project maintainers.
-          </p>
-          <div className="rounded-base border-2 border-border bg-secondary-background p-4">
-            <p className="text-sm leading-relaxed md:text-base">
-              If you experience or witness unacceptable behavior, please report
-              it to the maintainers via the{" "}
-              <a style={{ textDecoration: "underline" }} href="/contact">
-                contact page
-              </a>
-              .
-            </p>
-            <p>
-              All complaints will be reviewed and investigated and will result
-              in a response that is deemed necessary and appropriate to the
-              circumstances. The project team is obligated to maintain
-              confidentiality with regard to the reporter of an incident.
-            </p>
-          </div>
-        </section>
-
-        <section className="rounded-base border-2 border-border bg-background p-5 shadow-shadow">
-          <h2 className="mb-3 text-xl font-heading uppercase tracking-wide">
-            Attribution
-          </h2>
-          <p className="text-sm leading-relaxed md:text-base">
-            This Code of Conduct is adapted from the{" "}
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[36px_36px] opacity-10" />      
+      
+      <MDXRemote 
+        source={mdxSource} 
+        components={{
+          ContactLink: ({ children }) => (
             <a
-              href="https://www.contributor-covenant.org"
-              target="_blank"
-              rel="noreferrer"
-              className="ml-1 font-heading underline underline-offset-2"
+              style={{ textDecoration: "underline" }}
+              href={localizedPath(locale, "/contact")}
             >
-              Contributor Covenant
+              {children}
             </a>
-            , version 2.1, available at
-            <a
-              href="https://www.contributor-covenant.org/version/2/1/code_of_conduct.html"
-              target="_blank"
-              rel="noreferrer"
-              className="ml-1 font-heading underline underline-offset-2"
-            >
-              https://www.contributor-covenant.org/version/2/1/code_of_conduct.html
-            </a>
-            .
-          </p>
-        </section>
-
-        <p className="mt-5 text-xs font-mono uppercase tracking-[0.2em] text-foreground/70">
-          Last Updated: April 2026
-        </p>
-      </article>
+          )
+        }} 
+      />
 
       <SiteFooter />
     </main>

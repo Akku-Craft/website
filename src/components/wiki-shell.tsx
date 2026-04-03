@@ -1,6 +1,7 @@
 "use client";
 
 import { getWikiRootPage, wikiPages } from "@/lib/wiki-data";
+import { localizedPath, type Locale } from "@/lib/i18n";
 import {
   BookOpenText,
   ChevronRight,
@@ -22,13 +23,16 @@ const iconMap = {
 
 type WikiShellProps = {
   children: ReactNode;
+  locale: Locale;
 };
 
-function getWikiPath(slug: string) {
-  return slug === getWikiRootPage().slug ? "/wiki" : `/wiki/${slug}`;
+function getWikiPath(locale: Locale, slug: string) {
+  return slug === getWikiRootPage().slug
+    ? localizedPath(locale, "/wiki")
+    : localizedPath(locale, `/wiki/${slug}`);
 }
 
-export default function WikiShell({ children }: WikiShellProps) {
+export default function WikiShell({ children, locale }: WikiShellProps) {
   const segment = useSelectedLayoutSegment();
   const activeSlug = segment ?? getWikiRootPage().slug;
   const currentPage =
@@ -60,7 +64,7 @@ export default function WikiShell({ children }: WikiShellProps) {
               return (
                 <Link
                   key={page.slug}
-                  href={getWikiPath(page.slug)}
+                  href={getWikiPath(locale, page.slug)}
                   aria-current={isActive ? "page" : undefined}
                   className={`flex items-center gap-3 rounded-base border-2 border-border px-3 py-3 shadow-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 ${
                     isActive
@@ -84,7 +88,7 @@ export default function WikiShell({ children }: WikiShellProps) {
         <section className="min-w-0 px-4 md:pl-72 md:pr-8 lg:pl-80 lg:pr-12">
           <div className="mb-6 rounded-base border-2 border-border bg-secondary-background px-4 py-3 font-normal shadow-shadow">
             <p className="font-mono text-xs uppercase tracking-[0.3em] text-foreground/55">
-              /wiki/ {currentPage.title}
+              {localizedPath(locale, "/wiki/")} {currentPage.title}
             </p>
           </div>
 

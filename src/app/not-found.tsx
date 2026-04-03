@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Compass, Home, Mail } from "lucide-react";
 
 import SiteFooter from "@/components/site-footer";
+import { getRequestLocale } from "@/lib/i18n-server";
+import { localizedPath } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "404",
@@ -13,7 +15,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function NotFound() {
+export default async function NotFound() {
+  const locale = await getRequestLocale();
+
   return (
     <main className="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col px-4 md:px-8">
       <div className="pointer-events-none fixed inset-0 -z-10 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[36px_36px] opacity-10" />
@@ -33,14 +37,14 @@ export default function NotFound() {
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
-              href="/"
+              href={localizedPath(locale, "/")}
               className="inline-flex items-center gap-2 rounded-base border-2 border-border bg-secondary-background px-3 py-1.5 text-sm font-heading text-foreground shadow-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
             >
               <Home className="size-4" />
               Back to home
             </Link>
             <Link
-              href="/contact"
+              href={localizedPath(locale, "/contact")}
               className="inline-flex items-center gap-2 rounded-base border-2 border-border bg-background px-3 py-1.5 text-sm font-heading text-foreground shadow-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
             >
               <Mail className="size-4" />
@@ -60,7 +64,7 @@ export default function NotFound() {
             </p>
             <div className="flex flex-col gap-2">
               <Link
-                href="/wiki/"
+                href={localizedPath(locale, "/wiki")}
                 className="inline-flex items-center justify-between rounded-base border-2 border-border bg-background px-3 py-2 text-sm font-heading shadow-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
               >
                 Wiki
@@ -72,7 +76,7 @@ export default function NotFound() {
                 </span>
               </Link>
               <Link
-                href="/#projects"
+                href={localizedPath(locale, "/#projects")}
                 className="inline-flex items-center justify-between rounded-base border-2 border-border bg-background px-3 py-2 text-sm font-heading shadow-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
               >
                 Featured Repositories

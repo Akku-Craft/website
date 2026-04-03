@@ -1,6 +1,7 @@
 "use client";
 
 import { useThemeMode } from "@/components/theme-mode-provider";
+import { localizedPath, type Locale } from "@/lib/i18n";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,6 +10,8 @@ import { useEffect, useState } from "react";
 type SiteHeaderProps = {
   logoSrc?: string;
   siteName?: string;
+  locale: Locale;
+  dict: any;
 };
 
 const socialLinks = [
@@ -26,6 +29,8 @@ function socialIconButtonClassName() {
 export default function SiteHeader({
   logoSrc = "/logo.png",
   siteName = "Akku-Craft",
+  locale,
+  dict,
 }: SiteHeaderProps) {
   const { effectiveMode } = useThemeMode();
   const [isCompact, setIsCompact] = useState(false);
@@ -66,9 +71,12 @@ export default function SiteHeader({
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { href: "/wiki", label: "Wiki" },
-    { href: "/contributing", label: "Contributing" },
-    { href: "/contact", label: "Contact" },
+    { href: localizedPath(locale, "/wiki"), label: dict.wiki },
+    {
+      href: localizedPath(locale, "/contributing"),
+      label: dict.contributing,
+    },
+    { href: localizedPath(locale, "/contact"), label: dict.contact },
   ];
 
   return (
@@ -78,7 +86,7 @@ export default function SiteHeader({
     >
       <div className="flex items-center justify-between gap-3">
         <Link
-          href="/"
+          href={localizedPath(locale, "/")}
           className="inline-flex min-w-0 items-center gap-2 md:gap-3"
         >
           <Image

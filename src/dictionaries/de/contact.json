@@ -1,0 +1,10 @@
+{
+  "title": "Kontakt",
+  "discord": "Discord",
+  "emailAddresses": "E-Mail-Adressen",
+  "noEmailsConfigured": "Es sind noch keine Kontakt-E-Mails konfiguriert. Bitte setze CONTACT_EMAIL_1..3 in deiner .env-Datei.",
+  "unlockTitle": "E-Mail-Adressen freischalten",
+  "unlockText": "Schließe die Turnstile-Prüfung ab, um die drei E-Mail-Adressen anzuzeigen.",
+  "missingSiteKey": "NEXT_PUBLIC_TURNSTILE_SITE_KEY fehlt in der .env-Datei.",
+  "verifyButton": "Verifizieren und E-Mails anzeigen"
+}

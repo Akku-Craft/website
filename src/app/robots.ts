@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/contact/verify"],
+      disallow: ["/contact/verify", "/de/contact/verify", "/en/contact/verify"],
     },
     sitemap: `${baseUrl}/sitemap.xml`,
   };

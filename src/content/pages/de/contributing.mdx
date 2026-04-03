@@ -1,0 +1,190 @@
+<section className="mb-8 rounded-base border-2 border-border bg-main p-6 text-main-foreground shadow-shadow md:p-8">
+  <h1 className="mb-3 text-3xl font-heading uppercase tracking-wide md:text-4xl">
+    Zu Akku-Craft beitragen
+  </h1>
+  <p className="max-w-4xl text-sm leading-relaxed md:text-base">
+    Danke für dein Interesse am Mitwirken. Akku-Craft ist ein kleines Projekt, und
+    externe Hilfe macht wirklich einen Unterschied — egal ob du dich mit Embedded
+    Systems, Webentwicklung, PCB-Design oder CAD auskennst.
+  </p>
+</section>
+
+<section className="mb-8 rounded-base border-2 border-border bg-[#ff4b2a] p-5 text-black shadow-shadow md:p-6">
+  <p className="text-sm font-heading uppercase tracking-wide md:text-base">
+    Dies ist eine kurze Übersicht. Detaillierte Beitragsrichtlinien findest du in der
+    CONTRIBUTING.md des jeweiligen Repositorys.
+  </p>
+</section>
+
+<article className="mb-8 rounded-base border-2 border-border bg-secondary-background p-6 shadow-shadow md:p-8">
+  <section className="mb-6 rounded-base border-2 border-border bg-background p-5 shadow-shadow">
+    <h2 className="mb-3 text-xl font-heading uppercase tracking-wide">
+      Zuerst: das Wiki lesen
+    </h2>
+    <p className="text-sm leading-relaxed md:text-base">
+      Bitte tue das, bevor du in ein Repository eintauchst. Das Wiki erklärt
+      die Architektur, Designentscheidungen und Konventionen, die alles konsistent
+      halten. Wer es überspringt, sorgt meist für mehr Hin-und-Her später.
+    </p>
+    <div className="mt-4">
+      <WikiLink />
+    </div>
+  </section>
+
+<section className="mb-6 rounded-base border-2 border-border bg-background p-5 shadow-shadow">
+  <h2 className="mb-3 text-xl font-heading uppercase tracking-wide">
+    So erreichst du uns
+  </h2>
+  <p className="mb-4 text-sm leading-relaxed md:text-base">
+    Am einfachsten geht es über <strong>Discord</strong>. Schreib einfach:
+  </p>
+  <ul className="mb-4 list-disc space-y-1 pl-5 text-sm leading-relaxed md:text-base">
+    <li>
+      <span className="font-mono">jumpstone4477</span> <em>(bevorzugt)</em>
+    </li>
+    <li>
+      <span className="font-mono">akku_craft</span>
+    </li>
+  </ul>
+  <p className="text-sm leading-relaxed md:text-base">
+    Falls Discord für dich nicht in Frage kommt, schick uns eine E-Mail über die{" "}
+    <ContactLink>Kontaktseite</ContactLink>.
+  </p>
+  <p className="mt-4 text-sm leading-relaxed md:text-base">
+    Erwähne beim Kontakt bitte, in welchem Bereich du mitwirken möchtest. So können
+    wir dich direkt in die richtige Richtung weisen.
+  </p>
+</section>
+
+  <section className="mb-6 rounded-base border-2 border-border bg-background p-5 shadow-shadow">
+    <h2 className="mb-4 text-xl font-heading uppercase tracking-wide">
+      Beitragsbereiche
+    </h2>
+
+    <div className="mb-4 rounded-base border-2 border-border bg-secondary-background p-4 shadow-shadow">
+      <h3 className="mb-2 text-lg font-heading uppercase tracking-wide">
+        Firmware
+      </h3>
+      <p className="mb-3 text-sm leading-relaxed md:text-base">
+        <span className="font-heading">Repository:</span>{" "}
+        <a
+          href="https://github.com/Akku-Craft/ArduinoBms"
+          target="_blank"
+          rel="noreferrer"
+          className="font-heading underline underline-offset-2"
+        >
+          Akku-Craft/ArduinoBms
+        </a>
+      </p>
+      <p className="mb-3 text-sm leading-relaxed md:text-base">
+        Das Gehirn des Systems. Wir arbeiten hauptsächlich in <strong>C++</strong>
+        , mit etwas C, wo es sinnvoll ist.
+      </p>
+      <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed md:text-base">
+        <li>Arduino / PlatformIO Umgebung</li>
+        <li>Echtzeit-BMS-Logik (SoC, SoH, Schutzschaltungen)</li>
+        <li>I²C / CAN Kommunikation</li>
+      </ul>
+      <p className="mt-3 text-sm leading-relaxed md:text-base">
+        Ideal, wenn du mit Embedded C++ vertraut bist und nah an der Hardware
+        arbeiten möchtest.
+      </p>
+    </div>
+
+    <div className="mb-4 rounded-base border-2 border-border bg-secondary-background p-4 shadow-shadow">
+      <h3 className="mb-2 text-lg font-heading uppercase tracking-wide">
+        Website
+      </h3>
+      <p className="mb-3 text-sm leading-relaxed md:text-base">
+        <span className="font-heading">Repository:</span>{" "}
+        <a
+          href="https://github.com/Akku-Craft/website"
+          target="_blank"
+          rel="noreferrer"
+          className="font-heading underline underline-offset-2"
+        >
+          Akku-Craft/website
+        </a>
+      </p>
+      <p className="mb-3 text-sm leading-relaxed md:text-base">
+        Wahrscheinlich der zugänglichste Einstiegspunkt, besonders wenn du neu im
+        Projekt bist und keinen Hardware-Hintergrund hast.
+      </p>
+      <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed md:text-base">
+        <li>Next.js + TypeScript</li>
+        <li>UI-Verbesserungen, Inhalte und Dokumentationsseiten</li>
+      </ul>
+    </div>
+
+    <div className="mb-4 rounded-base border-2 border-border bg-secondary-background p-4 shadow-shadow">
+      <h3 className="mb-2 text-lg font-heading uppercase tracking-wide">
+        Schaltpläne
+      </h3>
+      <p className="mb-3 text-sm leading-relaxed md:text-base">
+        <span className="font-heading">Repository:</span>{" "}
+        <a
+          href="https://github.com/Akku-Craft/schematics"
+          target="_blank"
+          rel="noreferrer"
+          className="font-heading underline underline-offset-2"
+        >
+          Akku-Craft/schematics
+        </a>
+      </p>
+      <p className="mb-3 text-sm leading-relaxed md:text-base">
+        Derzeit liegt der Fokus hier eher auf Bereinigung und Optimierung als auf
+        neuen Features. Wenn du Erfahrung im PCB-Design hast und Freude daran findest,
+        Dinge ordentlich und korrekt zu machen, bist du hier richtig.
+      </p>
+      <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed md:text-base">
+        <li>KiCad (oder kompatible Werkzeuge)</li>
+        <li>Verbesserung von Layout, Beschriftungen und Lesbarkeit</li>
+      </ul>
+    </div>
+
+    <div className="rounded-base border-2 border-border bg-secondary-background p-4 shadow-shadow">
+      <h3 className="mb-2 text-lg font-heading uppercase tracking-wide">
+        3D-Modelle
+      </h3>
+      <p className="mb-3 text-sm leading-relaxed md:text-base">
+        <span className="font-heading">Repository:</span>{" "}
+        <a
+          href="https://github.com/Akku-Craft/3d-models"
+          target="_blank"
+          rel="noreferrer"
+          className="font-heading underline underline-offset-2"
+        >
+          Akku-Craft/3d-models
+        </a>
+      </p>
+      <p className="mb-3 text-sm leading-relaxed md:text-base">
+        Gehäusedesign für den FDM-Druck. Wenn du CAD magst und Wert darauf legst,
+        dass Teile sauber zusammenpassen, freuen wir uns über deine Mitarbeit.
+      </p>
+      <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed md:text-base">
+        <li>PETG / ASA / ABS bevorzugt für funktionale Aufbauten</li>
+        <li>
+          Wärmemanagement und Montagetauglichkeit stehen im Vordergrund
+        </li>
+      </ul>
+    </div>
+
+  </section>
+
+  <section className="rounded-base border-2 border-border bg-background p-5 shadow-shadow">
+    <h2 className="mb-3 text-xl font-heading uppercase tracking-wide">
+      Noch etwas
+    </h2>
+    <p className="mb-4 text-sm leading-relaxed md:text-base">
+      Akku-Craft hat bewusst einen begrenzten Umfang. Wir versuchen nicht, alles
+      zu machen — wir versuchen, wenige Dinge gut zu machen. Wenn du dir nicht
+      sicher bist, ob etwas passt, frag lieber vorher, bevor du es umsetzt.
+    </p>
+    <p className="text-sm leading-relaxed md:text-base">
+      Wir freuen uns, von dir zu hören.
+    </p>
+    <p className="mt-4 text-sm leading-relaxed md:text-base">
+      — <em>Das Akku-Craft Team</em>
+    </p>
+  </section>
+</article>

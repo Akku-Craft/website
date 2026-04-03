@@ -1,0 +1,56 @@
+{
+  "heroSubtitle": "Damit unsere Zukunft modular bleibt.",
+  "getStarted": {
+    "title": "Loslegen",
+    "text": "Möchtest du mitmachen? Lies das Wiki, um das Projekt zu verstehen, oder steige direkt ein und trage bei.",
+    "readWiki": "Wiki lesen",
+    "contribute": "Erfahre, wie du beitragen kannst"
+  },
+  "about": {
+    "title": "Über uns",
+    "subtitle": "Nachhaltig • Modular • Dezentral",
+    "description": "Akku-Craft ist ein universelles, modulares Batteriesystem, das aktiv zur Reduzierung von Elektroschrott beiträgt. Dank dezentraler Überwachung und präzisem Zell-Balancing garantiert das System eine sichere, langlebige und nachhaltige Stromversorgung für eine Vielzahl von Geräten.",
+    "teamTitle": "Das Team:",
+    "teamTimon": "Firmware-Entwickler (C++ / BMS-Logik)",
+    "teamFabian": "Hardware-Entwicklung, Prototypenbau & Management",
+    "teamHenry": "Schaltungsdesign, 3D-Modellierung, Website-Entwicklung & IT-Management"
+  },
+  "repos": {
+    "title": "Ausgewählte Repositories",
+    "projects": [
+      {
+        "title": "ArduinoBMS",
+        "description": "Arduino-Firmware für unser Batteriemanagementsystem.",
+        "tags": ["C", "C++", "Arduino", "BMS"],
+        "links": [
+          {
+            "label": "Repository",
+            "href": "https://github.com/Akku-Craft/ArduinoBms"
+          }
+        ]
+      },
+      {
+        "title": "Schematics",
+        "description": "Hardware-Schaltpläne und elektronische Schaltungsdesigns.",
+        "tags": ["KiCAD"],
+        "links": [
+          {
+            "label": "Repository",
+            "href": "https://github.com/Akku-Craft/schematics"
+          }
+        ]
+      },
+      {
+        "title": "3d-models",
+        "description": "3D-Designdateien und CAD-Modelle für das Gehäuse.",
+        "tags": ["KiCAD"],
+        "links": [
+          {
+            "label": "Repository",
+            "href": "https://github.com/Akku-Craft/3d-models"
+          }
+        ]
+      }
+    ]
+  }
+}

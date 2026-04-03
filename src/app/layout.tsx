@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import SiteHeader from "@/components/site-header";
 import { ThemeModeProvider } from "@/components/theme-mode-provider";
+import { getRequestLocale } from "@/lib/i18n-server";
+import { getDictionary } from "@/dictionaries";
 import { SITE_URL } from "@/lib/site";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -99,11 +101,13 @@ const themeInitScript = `(() => {
   root.classList.toggle("dark", effectiveMode === "dark");
 })();`;
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const currentLocale = await getRequestLocale();
+  const dict = await getDictionary(currentLocale, "common");
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -116,7 +120,7 @@ export default function RootLayout({
 
   return (
     <html
-      lang="en"
+      lang={currentLocale}
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
     >
@@ -131,7 +135,7 @@ export default function RootLayout({
         <ThemeModeProvider>
           <div className="fixed inset-x-0 top-0 z-50">
             <div className="relative mx-auto w-full max-w-6xl px-4 pt-4 md:px-8 md:pt-6">
-              <SiteHeader />
+              <SiteHeader locale={currentLocale} dict={dict} />
             </div>
           </div>
 

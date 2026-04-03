@@ -2,10 +2,13 @@ import { Badge } from "@/components/ui/badge";
 import GitHubSections from "@/components/github-sections";
 import SectionHeading from "@/components/section-heading";
 import SiteFooter from "@/components/site-footer";
+import { getRequestLocale } from "@/lib/i18n-server";
+import { localizedPath } from "@/lib/i18n";
 import { SITE_URL } from "@/lib/site";
 import { ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getDictionary } from "@/dictionaries";
 
 const baseUrl = SITE_URL;
 
@@ -38,33 +41,6 @@ type ProjectCard = {
   tags: string[];
   links: Array<{ label: string; href: string }>;
 };
-
-const featuredProjects: ProjectCard[] = [
-  {
-    title: "ArduinoBMS",
-    description: "Arduino firmware for our battery management system.",
-    tags: ["C", "C++", "Arduino", "BMS"],
-    links: [
-      { label: "Repository", href: "https://github.com/Akku-Craft/ArduinoBms" },
-    ],
-  },
-  {
-    title: "Schematics",
-    description: "Hardware schematics and electronic circuit designs.",
-    tags: ["KiCAD"],
-    links: [
-      { label: "Repository", href: "https://github.com/Akku-Craft/schematics" },
-    ],
-  },
-  {
-    title: "3d-models",
-    description: "3D design files and CAD models for the enclosure.",
-    tags: ["KiCAD"],
-    links: [
-      { label: "Repository", href: "https://github.com/Akku-Craft/3d-models" },
-    ],
-  },
-];
 
 function ProjectGrid({ projects }: { projects: ProjectCard[] }) {
   return (
@@ -107,7 +83,10 @@ function ProjectGrid({ projects }: { projects: ProjectCard[] }) {
   );
 }
 
-export default function Page() {
+export default async function Page() {
+  const locale = await getRequestLocale();
+  const dict = await getDictionary(locale, "home");
+
   return (
     <main className="relative mx-auto w-full max-w-6xl px-4 pb-0 md:px-8 md:pb-0">
       <div className="pointer-events-none fixed inset-0 -z-10 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[36px_36px] opacity-10" />
@@ -119,30 +98,29 @@ export default function Page() {
           </span>
         </h1>
         <p className="max-w-3xl text-lg leading-relaxed md:text-xl">
-          Damit unsere Zukunft modular bleibt.
+          {dict.heroSubtitle}
         </p>
       </section>
 
       <section className="mb-8 rounded-base border-2 border-border bg-secondary-background p-6 shadow-shadow md:p-8">
-        <SectionHeading index="02" title="Get Started" />
+        <SectionHeading index="02" title={dict.getStarted.title} />
         <p className="mb-5 max-w-3xl text-sm leading-relaxed md:text-base">
-          Want to get involved? Read the wiki to understand the project, or jump
-          straight in and contribute.{" "}
+          {dict.getStarted.text}
         </p>
 
         <div className="flex flex-col gap-3 sm:flex-row">
           <Link
-            href="/wiki"
+            href={localizedPath(locale, "/wiki")}
             className="inline-flex items-center justify-center gap-2 rounded-base border-2 border-border bg-main px-4 py-2 text-sm font-heading uppercase tracking-wide text-main-foreground shadow-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
           >
-            Read Wiki
+            {dict.getStarted.readWiki}
             <ArrowUpRight className="size-4" />
           </Link>
           <Link
-            href="/contributing"
+            href={localizedPath(locale, "/contributing")}
             className="inline-flex items-center justify-center gap-2 rounded-base border-2 border-border bg-background px-4 py-2 text-sm font-heading uppercase tracking-wide text-foreground shadow-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
           >
-            Learn how to contribute
+            {dict.getStarted.contribute}
             <ArrowUpRight className="size-4" />
           </Link>
         </div>
@@ -152,17 +130,16 @@ export default function Page() {
         id="about"
         className="mb-8 rounded-base border-2 border-border bg-secondary-background p-6 shadow-shadow"
       >
-        <SectionHeading index="03" title="About" />
+        <SectionHeading index="03" title={dict.about.title} />
         <p className="mb-4 max-w-4xl text-sm leading-relaxed md:text-base">
-          Sustainable • Modular • Decentralized
+          {dict.about.subtitle}
         </p>
         <p className="mb-4 max-w-4xl text-sm leading-relaxed md:text-base">
-          Akku-Craft is a universal, modular battery system designed to actively
-          reduce electronic waste. Thanks to decentralized monitoring and
-          precise cell balancing, the system guarantees a safe, long-lasting,
-          and sustainable power supply for a wide variety of devices.
+          {dict.about.description}
         </p>
-        <h2 className="mb-3 text-xl font-heading">The Team:</h2>
+        <h2 className="mb-3 text-xl font-heading">
+          {dict.about.teamTitle}
+        </h2>
         <ul className="list-disc pl-6">
           <li className="mb-2 text-sm leading-relaxed md:text-base">
             <a
@@ -172,7 +149,7 @@ export default function Page() {
             >
               Timon
             </a>{" "}
-            - Firmware Developer (C++ / BMS Logic)
+            - {dict.about.teamTimon}
           </li>
           <li className="mb-2 text-sm leading-relaxed md:text-base">
             <a
@@ -182,7 +159,7 @@ export default function Page() {
             >
               Fabian
             </a>{" "}
-            - Hardware Engineering, Prototyping & Management
+            - {dict.about.teamFabian}
           </li>
           <li className="mb-2 text-sm leading-relaxed md:text-base">
             <a
@@ -192,7 +169,7 @@ export default function Page() {
             >
               Henry
             </a>{" "}
-            - Circuit Design, 3D Modeling, Website Developer & IT-Management
+            - {dict.about.teamHenry}
           </li>
         </ul>
       </section>
@@ -201,8 +178,8 @@ export default function Page() {
         id="projects"
         className="mb-8 rounded-base border-2 border-border bg-secondary-background p-6 shadow-shadow"
       >
-        <SectionHeading index="04" title="Featured Repositories" />
-        <ProjectGrid projects={featuredProjects} />
+        <SectionHeading index="04" title={dict.repos.title} />
+        <ProjectGrid projects={dict.repos.projects} />
       </section>
 
       <GitHubSections organization="akku-craft" />

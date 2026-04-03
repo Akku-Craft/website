@@ -1,0 +1,56 @@
+{
+  "heroSubtitle": "So our future remains modular.",
+  "getStarted": {
+    "title": "Get Started",
+    "text": "Want to get involved? Read the wiki to understand the project, or jump straight in and contribute.",
+    "readWiki": "Read Wiki",
+    "contribute": "Learn how to contribute"
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "Sustainable • Modular • Decentralized",
+    "description": "Akku-Craft is a universal, modular battery system designed to actively reduce electronic waste. Thanks to decentralized monitoring and precise cell balancing, the system guarantees a safe, long-lasting, and sustainable power supply for a wide variety of devices.",
+    "teamTitle": "The Team:",
+    "teamTimon": "Firmware Developer (C++ / BMS Logic)",
+    "teamFabian": "Hardware Engineering, Prototyping & Management",
+    "teamHenry": "Circuit Design, 3D Modeling, Website Developer & IT-Management"
+  },
+  "repos": {
+    "title": "Featured Repositories",
+    "projects": [
+      {
+        "title": "ArduinoBMS",
+        "description": "Arduino firmware for our battery management system.",
+        "tags": ["C", "C++", "Arduino", "BMS"],
+        "links": [
+          {
+            "label": "Repository",
+            "href": "https://github.com/Akku-Craft/ArduinoBms"
+          }
+        ]
+      },
+      {
+        "title": "Schematics",
+        "description": "Hardware schematics and electronic circuit designs.",
+        "tags": ["KiCAD"],
+        "links": [
+          {
+            "label": "Repository",
+            "href": "https://github.com/Akku-Craft/schematics"
+          }
+        ]
+      },
+      {
+        "title": "3d-models",
+        "description": "3D design files and CAD models for the enclosure.",
+        "tags": ["KiCAD"],
+        "links": [
+          {
+            "label": "Repository",
+            "href": "https://github.com/Akku-Craft/3d-models"
+          }
+        ]
+      }
+    ]
+  }
+}
