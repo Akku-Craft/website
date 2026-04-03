@@ -112,13 +112,13 @@ export default function Page() {
     <main className="relative mx-auto w-full max-w-6xl px-4 pb-0 md:px-8 md:pb-0">
       <div className="pointer-events-none fixed inset-0 -z-10 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[36px_36px] opacity-10" />
 
-      <section className="mb-8 rounded-base border-2 border-border bg-main p-6 text-main-foreground shadow-shadow md:p-8">
-        <h1 className="mb-3 text-3xl font-heading leading-tight sm:text-5xl">
+      <section className="mb-8 rounded-base border-2 border-border bg-main px-8 py-10 text-main-foreground shadow-shadow md:px-12 md:py-14">
+        <h1 className="mb-4 text-5xl font-heading leading-tight sm:text-6xl md:text-7xl">
           <span className="glitch-name" data-text="Akku-Craft">
             Akku-Craft
           </span>
         </h1>
-        <p className="max-w-2xl text-base leading-relaxed">
+        <p className="max-w-3xl text-lg leading-relaxed md:text-xl">
           Damit unsere Zukunft modular bleibt.
         </p>
       </section>
