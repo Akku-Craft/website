@@ -29,6 +29,8 @@ type GitHubContributor = {
   contributions: number;
 };
 
+const GITHUB_REVALIDATE_SECONDS = 60 * 60 * 6;
+
 function createGitHubHeaders(): HeadersInit {
   const headers: HeadersInit = {
     Accept: "application/vnd.github+json",
@@ -54,7 +56,7 @@ async function fetchAllOrganizationRepos(
       `https://api.github.com/orgs/${organization}/repos?sort=updated&per_page=100&page=${page}`,
       {
         headers,
-        next: { revalidate: 60 * 30 },
+        next: { revalidate: GITHUB_REVALIDATE_SECONDS },
       },
     );
 
@@ -95,7 +97,7 @@ async function getCommitCountForRepo(
       `https://api.github.com/repos/${owner}/${repo}/contributors?anon=true&per_page=100&page=${page}`,
       {
         headers,
-        next: { revalidate: 60 * 30 },
+        next: { revalidate: GITHUB_REVALIDATE_SECONDS },
       },
     );
 
@@ -135,7 +137,7 @@ export async function getGitHubData(
   const [profileResponse, allRepos] = await Promise.all([
     fetch(`https://api.github.com/orgs/${organization}`, {
       headers,
-      next: { revalidate: 60 * 30 },
+      next: { revalidate: GITHUB_REVALIDATE_SECONDS },
     }),
     fetchAllOrganizationRepos(organization, headers),
   ]);
@@ -145,9 +147,10 @@ export async function getGitHubData(
     : null;
 
   const repos = allRepos;
-  const commitCounts = repos
+  const visibleRepos = repos ? repos.slice(0, repoLimit) : null;
+  const commitCounts = visibleRepos
     ? await Promise.all(
-        repos.map((repo) =>
+        visibleRepos.map((repo) =>
           getCommitCountForRepo(repo.owner.login, repo.name, headers),
         ),
       )
@@ -159,7 +162,7 @@ export async function getGitHubData(
 
   return {
     profile,
-    repos: repos ? repos.slice(0, repoLimit) : null,
+    repos: visibleRepos,
     totalCommits,
     hasError:
       !profileResponse.ok ||

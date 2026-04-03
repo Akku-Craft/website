@@ -30,6 +30,20 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to see the application. The page will automatically reload as you make changes to the code.
 
+### Environment Variables
+
+GitHub stats on the homepage use the GitHub REST API at render time.
+Without authentication, GitHub's low anonymous rate limit is often exhausted quickly.
+
+Set a personal access token in your environment:
+
+```bash
+# .env.local
+GITHUB_TOKEN=ghp_your_token_here
+```
+
+For public repository/org statistics, a fine-grained token with read-only metadata access is sufficient.
+
 ## Project Structure
 
 The project follows Next.js App Router conventions:
