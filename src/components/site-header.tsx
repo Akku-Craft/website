@@ -202,7 +202,7 @@ export default function SiteHeader({
               {socialLinks.map((link) => (
                 <a
                   key={link.href}
-                  className={socialIconButtonClassName()}
+                  className={socialIconButtonClassName(isCompact)}
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
