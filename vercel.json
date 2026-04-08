@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?<subdomain>[^.]+)\\.akku-craft\\.usbverkehrtherum\\.de"
+        }
+      ],
+      "destination": "https://akku-craft.usbverkehrtherum.de/:subdomain",
+      "permanent": true
+    }
+  ]
+}
