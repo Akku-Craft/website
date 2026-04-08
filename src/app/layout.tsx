@@ -7,7 +7,7 @@ import { SITE_URL } from "@/lib/site";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./minimalism-globals.css";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

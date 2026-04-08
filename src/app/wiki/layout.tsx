@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import WikiShell from "@/components/wiki-shell";
 import { getRequestLocale } from "@/lib/i18n-server";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 type WikiLayoutProps = {
   children: ReactNode;
