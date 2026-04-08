@@ -1,4 +1,5 @@
 export type WikiPage = {
+  kind: "page";
   slug: string;
   fileName: string;
   title: string;
@@ -6,8 +7,19 @@ export type WikiPage = {
   icon: "home" | "architecture" | "hardware" | "safety";
 };
 
+export type WikiExternalLink = {
+  kind: "external";
+  href: string;
+  title: string;
+  summary: string;
+  icon: "external" | "user";
+};
+
+export type WikiSidebarItem = WikiPage | WikiExternalLink;
+
 export const wikiPages: WikiPage[] = [
   {
+    kind: "page",
     slug: "home",
     fileName: "Home.md",
     title: "Home",
@@ -15,6 +27,7 @@ export const wikiPages: WikiPage[] = [
     icon: "home",
   },
   {
+    kind: "page",
     slug: "firmware-arduinobms",
     fileName: "Firmware-ArduinoBMS.md",
     title: "Firmware ArduinoBMS",
@@ -22,6 +35,7 @@ export const wikiPages: WikiPage[] = [
     icon: "architecture",
   },
   {
+    kind: "page",
     slug: "mechanical-design",
     fileName: "Mechanical-Design.md",
     title: "Mechanical Design",
@@ -29,11 +43,23 @@ export const wikiPages: WikiPage[] = [
     icon: "hardware",
   },
   {
+    kind: "page",
     slug: "schematics",
     fileName: "Schematics.md",
     title: "Schematics",
     summary: "Electrical schematics and circuit diagrams.",
     icon: "safety",
+  },
+];
+
+export const wikiSidebarItems: WikiSidebarItem[] = [
+  ...wikiPages,
+  {
+    kind: "external",
+    href: "/contributing",
+    title: "Contributing",
+    summary: "Learn how to contribute to the project.",
+    icon: "user",
   },
 ];
 

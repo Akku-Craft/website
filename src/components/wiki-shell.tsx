@@ -1,14 +1,16 @@
 "use client";
 
-import { getWikiRootPage, wikiPages } from "@/lib/wiki-data";
+import { getWikiRootPage, wikiPages, wikiSidebarItems } from "@/lib/wiki-data";
 import { localizedPath, type Locale } from "@/lib/i18n";
 import {
+  ArrowUpRight,
   BookOpenText,
   ChevronRight,
   Cpu,
   House,
-  Shield,
   Library,
+  User,
+  Shield,
 } from "lucide-react";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
@@ -19,6 +21,8 @@ const iconMap = {
   architecture: Library,
   hardware: Cpu,
   safety: Shield,
+  external: ArrowUpRight,
+  user: User,
 } as const;
 
 type WikiShellProps = {
@@ -30,6 +34,12 @@ function getWikiPath(locale: Locale, slug: string) {
   return slug === getWikiRootPage().slug
     ? localizedPath(locale, "/wiki")
     : localizedPath(locale, `/wiki/${slug}`);
+}
+
+function isExternalWikiLink(
+  item: (typeof wikiSidebarItems)[number],
+): item is Extract<(typeof wikiSidebarItems)[number], { kind: "external" }> {
+  return item.kind === "external";
 }
 
 export default function WikiShell({ children, locale }: WikiShellProps) {
@@ -57,8 +67,27 @@ export default function WikiShell({ children, locale }: WikiShellProps) {
           </div>
 
           <nav className="space-y-2" aria-label="Wiki navigation">
-            {wikiPages.map((page) => {
+            {wikiSidebarItems.map((page) => {
               const Icon = iconMap[page.icon];
+
+              if (isExternalWikiLink(page)) {
+                return (
+                  <a
+                    key={page.href}
+                    href={page.href}
+                    className="flex items-center gap-3 rounded-base border-2 border-border bg-background px-3 py-3 text-foreground shadow-shadow transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
+                  >
+                    <span className="mt-0.5 inline-flex size-8 shrink-0 items-center justify-center rounded-base border-2 border-border bg-secondary-background text-foreground shadow-shadow">
+                      <Icon className="size-4" />
+                    </span>
+                    <span className="min-w-0 flex-1 text-sm font-medium">
+                      {page.title}
+                    </span>
+                    <ArrowUpRight className="mt-1 size-4 shrink-0 opacity-70" />
+                  </a>
+                );
+              }
+
               const isActive = page.slug === currentPage.slug;
 
               return (
