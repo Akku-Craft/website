@@ -5,7 +5,7 @@ import { getRequestLocale } from "@/lib/i18n-server";
 import { getDictionary } from "@/dictionaries";
 import { SITE_URL } from "@/lib/site";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "./minimalism-globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -134,9 +134,7 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col">
         <ThemeModeProvider>
           <div className="fixed inset-x-0 top-0 z-50">
-            <div className="relative mx-auto w-full max-w-6xl px-4 pt-4 md:px-8 md:pt-6">
-              <SiteHeader locale={currentLocale} dict={dict} />
-            </div>
+            <SiteHeader locale={currentLocale} dict={dict} />
           </div>
 
           <div className="h-28 md:h-32" aria-hidden="true" />

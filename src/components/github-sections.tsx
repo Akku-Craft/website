@@ -32,13 +32,13 @@ export default async function GitHubSections({
               </p>
               <p className="text-3xl font-heading">{profile.public_repos}</p>
             </div>
-            <div className="rounded-base border-2 border-border bg-chart-2 p-4 text-black shadow-shadow">
+            <div className="rounded-base border-2 border-border bg-main p-4 text-main-foreground shadow-shadow">
               <p className="font-mono text-xs uppercase tracking-[0.2em]">
                 Followers
               </p>
               <p className="text-3xl font-heading">{profile.followers}</p>
             </div>
-            <div className="rounded-base border-2 border-border bg-chart-3 p-4 text-black shadow-shadow">
+            <div className="rounded-base border-2 border-border bg-main p-4 text-main-foreground shadow-shadow">
               <p className="font-mono text-xs uppercase tracking-[0.2em]">
                 Commits
               </p>

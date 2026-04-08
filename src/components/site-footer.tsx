@@ -97,7 +97,7 @@ export default async function SiteFooter() {
                   href="https://github.com/akku-craft"
                   target="_blank"
                 >
-                  {dict.github}
+                  GitHub
                 </a>
               </li>
             </ul>
@@ -105,7 +105,23 @@ export default async function SiteFooter() {
         </div>
 
         <div className="mt-4 rounded-base border-2 border-border bg-main px-4 py-3 text-sm text-main-foreground">
-          {dict.copyright}
+          {dict.copyright
+            .split("JumpStone")
+            .map((part: string, i: number, arr: string[]) => (
+              <span key={i}>
+                {part}
+                {i < arr.length - 1 && (
+                  <a
+                    href="https://jumpstone4477.de"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium underline underline-offset-2 hover:opacity-80 transition-opacity"
+                  >
+                    JumpStone
+                  </a>
+                )}
+              </span>
+            ))}
           <p>{dict.projectInfo}</p>
         </div>
       </div>
