@@ -1,4 +1,4 @@
-Contact: mailto:hi@akku-craft.usbverkehrtherum.de
+Contact: mailto:security@akku-craft.eu
 Expires: 2026-12-31T23:00:00.000Z
 Preferred-Languages: de, en
-Canonical: https://akku-craft.usbverkehrtherum.de/.well-known/security.txt
+Canonical: https://akku-craft.eu/.well-known/security.txt

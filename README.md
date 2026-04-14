@@ -117,4 +117,4 @@ This project is licensed under GNU GPLv3. For more information, visit the [LICEN
 
 ## Support
 
-For questions, issues, or feedback about this website, please reach out through my [contact page](https://akku-craft.usbverkehrtherum.de/contact).
+For questions, issues, or feedback about this website, please reach out through my [contact page](https://akku-craft.eu/contact).
