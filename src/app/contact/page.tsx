@@ -50,7 +50,10 @@ export default async function ContactPage() {
   const isUnlocked = cookieStore.get("contact_unlocked")?.value === "1";
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const discordUsername = "akku_craft";
-  const emails = isUnlocked ? getContactEmails() : [];
+  const allEmails = getContactEmails();
+  const primaryEmail = allEmails[0] ?? null;
+  const additionalEmails = allEmails.slice(1);
+  const visibleEmails = isUnlocked ? allEmails : allEmails.slice(0, 1);
 
   return (
     <>
@@ -81,32 +84,32 @@ export default async function ContactPage() {
         </section>
 
         <article className="mb-8 rounded-base border-2 border-border bg-secondary-background p-6 shadow-shadow md:p-8">
-          {isUnlocked ? (
-            <section className="rounded-base border-2 border-border bg-background p-5 shadow-shadow">
-              <h2 className="mb-3 text-xl font-heading uppercase tracking-wide">
-                {dict.emailAddresses}
-              </h2>
-              {emails.length === 0 ? (
-                <p className="text-sm leading-relaxed md:text-base">
-                  {dict.noEmailsConfigured}
-                </p>
-              ) : (
-                <ul className="space-y-2 text-sm md:text-base">
-                  {emails.map((email) => (
-                    <li key={email}>
-                      <a
-                        href={`mailto:${email}`}
-                        className="underline underline-offset-2"
-                      >
-                        {email}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </section>
-          ) : (
-            <section className="rounded-base border-2 border-border bg-background p-5 shadow-shadow">
+          <section className="rounded-base border-2 border-border bg-background p-5 shadow-shadow">
+            <h2 className="mb-3 text-xl font-heading uppercase tracking-wide">
+              {dict.emailAddresses}
+            </h2>
+            {visibleEmails.length > 0 ? (
+              <ul className="space-y-2 text-sm md:text-base">
+                {visibleEmails.map((email) => (
+                  <li key={email}>
+                    <a
+                      href={`mailto:${email}`}
+                      className="underline underline-offset-2"
+                    >
+                      {email}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-sm leading-relaxed md:text-base">
+                {dict.noEmailsConfigured}
+              </p>
+            )}
+          </section>
+
+          {!isUnlocked && additionalEmails.length > 0 ? (
+            <section className="mt-6 rounded-base border-2 border-border bg-background p-5 shadow-shadow">
               <h2 className="mb-3 text-xl font-heading uppercase tracking-wide">
                 {dict.unlockTitle}
               </h2>
@@ -138,7 +141,7 @@ export default async function ContactPage() {
                 </form>
               )}
             </section>
-          )}
+          ) : null}
         </article>
 
         <SiteFooter />

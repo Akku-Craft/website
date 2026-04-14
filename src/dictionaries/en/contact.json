@@ -4,7 +4,7 @@
   "emailAddresses": "Email Addresses",
   "noEmailsConfigured": "No contact emails are configured yet. Please set CONTACT_EMAIL_1..3 in your env file.",
   "unlockTitle": "Unlock Email Addresses",
-  "unlockText": "Complete the Turnstile challenge to view the three email addresses.",
+  "unlockText": "Complete the Turnstile challenge to view additional email addresses.",
   "missingSiteKey": "Missing NEXT_PUBLIC_TURNSTILE_SITE_KEY in env.",
   "verifyButton": "Verify and Show Emails"
 }
