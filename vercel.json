@@ -8,7 +8,18 @@
           "value": "(?<subdomain>[^.]+)\\.akku-craft\\.usbverkehrtherum\\.de"
         }
       ],
-      "destination": "https://akku-craft.usbverkehrtherum.de/:subdomain",
+      "destination": "https://akku-craft.eu/:subdomain",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?<subdomain>[^.]+)\\.akku-craft\\.eu"
+        }
+      ],
+      "destination": "https://akku-craft.eu/:subdomain",
       "permanent": true
     }
   ]
