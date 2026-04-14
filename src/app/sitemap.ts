@@ -34,7 +34,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.4,
       },
       {
-        url: `${baseUrl}${localizedPath(locale, "/legal")}`,
+        url: `${baseUrl}${localizedPath(locale, "/legal/imprint")}`,
+        lastModified: now,
+        changeFrequency: "yearly",
+        priority: 0.4,
+      },
+      {
+        url: `${baseUrl}${localizedPath(locale, "/legal/privacy")}`,
         lastModified: now,
         changeFrequency: "yearly",
         priority: 0.4,

@@ -11,29 +11,31 @@ import path from "path";
 const baseUrl = SITE_URL;
 
 export const metadata: Metadata = {
-  title: "Legal",
+  title: "Privacy Policy",
   description:
-    "Legal information, privacy policy, and disclaimer for the Akku-Craft website.",
+    "Privacy policy for the Akku-Craft website, including contact handling and local preference storage.",
   alternates: {
-    canonical: "/legal",
+    canonical: "/legal/privacy",
   },
   robots: {
     index: true,
     follow: true,
   },
   openGraph: {
-    title: "Legal Information | Akku-Craft",
-    description: "Legal information and disclaimer for the Akku-Craft website.",
+    title: "Privacy Policy | Akku-Craft",
+    description:
+      "Privacy policy for the Akku-Craft website, including contact handling and local preference storage.",
     type: "website",
-    url: "${baseUrl}/legal",
+    url: `${baseUrl}/legal/privacy`,
   },
   twitter: {
-    title: "Legal Information",
-    description: "Legal information and disclaimer for the Akku-Craft website.",
+    title: "Privacy Policy",
+    description:
+      "Privacy policy for the Akku-Craft website, including contact handling and local preference storage.",
   },
 };
 
-export default async function LegalPage() {
+export default async function PrivacyPage() {
   const locale = await getRequestLocale();
   const filePath = path.join(
     process.cwd(),
@@ -41,17 +43,18 @@ export default async function LegalPage() {
     "content",
     "pages",
     locale,
-    "legal.mdx"
+    "legal",
+    "privacy.mdx"
   );
-  
+
   const mdxSource = await readFile(filePath, "utf8");
 
   return (
     <main className="relative mx-auto w-full max-w-6xl px-4 pb-0 md:px-8 md:pb-0">
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[36px_36px] opacity-10" />      
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[36px_36px] opacity-10" />
 
-      <MDXRemote 
-        source={mdxSource} 
+      <MDXRemote
+        source={mdxSource}
         components={{
           ContactButton: ({ children }) => (
             <Link
@@ -60,8 +63,8 @@ export default async function LegalPage() {
             >
               {children}
             </Link>
-          )
-        }} 
+          ),
+        }}
       />
 
       <SiteFooter />

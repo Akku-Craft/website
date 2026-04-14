@@ -60,9 +60,17 @@ export default async function SiteFooter() {
               <li>
                 <a
                   className="underline underline-offset-2"
-                  href={localizedPath(locale, "/legal")}
+                  href={localizedPath(locale, "/legal/imprint")}
                 >
-                  {dict.legal}
+                  {dict.imprint}
+                </a>
+              </li>
+              <li>
+                <a
+                  className="underline underline-offset-2"
+                  href={localizedPath(locale, "/legal/privacy")}
+                >
+                  {dict.privacy}
                 </a>
               </li>
               <li>

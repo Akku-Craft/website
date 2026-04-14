@@ -5,6 +5,7 @@ import {
   isLocale,
   localeCookieName,
   localeHeaderName,
+  localizedPath,
   locales,
   parsePreferredLocale,
   stripLocalePrefix,
@@ -37,11 +38,30 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
+  const legacyLegalPath = pathname === "/legal";
+
   const pathLocale = getLocaleFromPath(pathname);
 
   if (pathLocale) {
+    const strippedPath = stripLocalePrefix(pathname);
+
+    if (strippedPath === "/legal") {
+      const redirectUrl = request.nextUrl.clone();
+      redirectUrl.pathname = localizedPath(pathLocale, "/legal/imprint");
+      redirectUrl.search = search;
+
+      const response = NextResponse.redirect(redirectUrl);
+      response.cookies.set(localeCookieName, pathLocale, {
+        path: "/",
+        sameSite: "lax",
+        maxAge: 60 * 60 * 24 * 365,
+      });
+
+      return response;
+    }
+
     const rewrittenUrl = request.nextUrl.clone();
-    rewrittenUrl.pathname = stripLocalePrefix(pathname);
+    rewrittenUrl.pathname = strippedPath;
 
     const requestHeaders = new Headers(request.headers);
     requestHeaders.set(localeHeaderName, pathLocale);
@@ -69,10 +89,11 @@ export function proxy(request: NextRequest) {
     ? preferredLocale
     : defaultLocale;
   const redirectUrl = request.nextUrl.clone();
+  const targetPathname = legacyLegalPath ? "/legal/imprint" : pathname;
   redirectUrl.pathname =
-    targetLocale === defaultLocale && pathname === "/"
+    targetLocale === defaultLocale && targetPathname === "/"
       ? `/${targetLocale}`
-      : `/${targetLocale}${pathname === "/" ? "" : pathname}`;
+      : `/${targetLocale}${targetPathname === "/" ? "" : targetPathname}`;
   redirectUrl.search = search;
 
   const response = NextResponse.redirect(redirectUrl);
