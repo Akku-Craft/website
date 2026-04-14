@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: `${baseUrl}${localizedPath(locale, "/")}`,
         lastModified: now,
         changeFrequency: "monthly",
-        priority: locale === "de" ? 1 : 0.9,
+        priority: 1,
       },
       {
         url: `${baseUrl}${localizedPath(locale, "/wiki")}`,
