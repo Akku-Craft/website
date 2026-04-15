@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import SiteHeader from "@/components/site-header";
 import { ThemeModeProvider } from "@/components/theme-mode-provider";
 import { getRequestLocale } from "@/lib/i18n-server";
@@ -143,6 +144,7 @@ export default async function RootLayout({
 
           {children}
         </ThemeModeProvider>
+        <Analytics />
       </body>
     </html>
   );
