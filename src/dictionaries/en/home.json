@@ -9,9 +9,9 @@
   "team": {
     "title": "Team",
     "timon": "Lead Developer",
-    "fabian": "Hardware Engineering, Prototyping",
-    "henry": "Circuit Design, 3D Modeling & Developer",
-    "tammo": "Hardware Engineering, Prototyping"
+    "fabian": "Hardware Engineering",
+    "henry": "Hardware Engineering & Developer",
+    "tammo": "Social Media Manager"
   },
   "repos": {
     "title": "Featured Repositories",

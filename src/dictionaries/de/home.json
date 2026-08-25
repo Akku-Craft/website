@@ -8,10 +8,10 @@
   },
   "team": {
     "title": "Team",
-    "timon": "Leitender Entwickler",
-    "fabian": "Hardwareentwicklung, Prototypenbau",
-    "henry": "Schaltungsdesign, 3D-Modellierung & Entwickler",
-    "tammo": "Hardwareentwicklung, Prototypenbau"
+    "timon": "Lead Developer",
+    "fabian": "Hardware Engineering",
+    "henry": "Hardware Engineering & Developer",
+    "tammo": "Social Media Manager"
   },
   "repos": {
     "title": "Ausgewählte Repositories",
